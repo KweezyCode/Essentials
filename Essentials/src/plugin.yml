@@ -470,6 +470,10 @@ commands:
     description: Calculates the worth of items in hand or as specified.
     usage: /<command> [item] [amount]
     aliases: [eprice,price,eworth]
+  rtp:
+    description: Teleports you to random location.
+    usage: /<command>
+    aliases: [ertp]
 
 permissions:
   essentials.*:
