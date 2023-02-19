@@ -1,11 +1,13 @@
 package com.earth2me.essentials.commands;
 
+import com.earth2me.essentials.Trade;
 import com.earth2me.essentials.User;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.Random;
 
@@ -19,8 +21,25 @@ public class Commandrtp extends EssentialsCommand {
     @Override
     protected void run(Server server, User user, String commandLabel, String[] args) throws Exception {
         if (user.isAuthorized("essentials.rtp")) {
-            user.teleport(getRespawnLoc());
-            user.sendMessage(_("teleporting"));
+            final Trade charge = new Trade(this.getName(), ess);
+            charge.isAffordableFor(user);
+
+            respawn(getRespawnLoc(), user, user, charge);
+
+            throw new NoChargeException();
+        }
+    }
+
+    private void respawn(Location location, final User teleportOwner, final User teleportee, final Trade charge) throws Exception
+    {
+
+        if (teleportOwner == null)
+        {
+            teleportee.getTeleport().now(location, false, PlayerTeleportEvent.TeleportCause.COMMAND);
+        }
+        else
+        {
+            teleportOwner.getTeleport().teleportPlayer(teleportee, location, charge, PlayerTeleportEvent.TeleportCause.COMMAND);
         }
     }
 
