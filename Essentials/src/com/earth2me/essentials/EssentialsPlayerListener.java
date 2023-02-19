@@ -165,7 +165,8 @@ public class EssentialsPlayerListener implements Listener
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerJoin(final PlayerJoinEvent event)
 	{
-		if (!ess.getSettings().getCustomJoinMessage().equals("none")) {
+		if (!ess.getSettings().getCustomJoinMessage().equals(""))
+		{
 			event.setJoinMessage(
 					ChatColor.translateAlternateColorCodes(
 							'&',
@@ -173,6 +174,19 @@ public class EssentialsPlayerListener implements Listener
 					)
 			);
 		}
+
+		if (!ess.getSettings().getAnnounceNewPlayerFormat().equals(""))
+		{
+			if (!event.getPlayer().hasPlayedBefore()) {
+				event.setJoinMessage(
+						ChatColor.translateAlternateColorCodes(
+								'&',
+								ess.getSettings().getAnnounceNewPlayerFormat().replace("{DISPLAYNAME}", ess.getUser(event.getPlayer()).getNick(true))
+						)
+				);
+			}
+		}
+
 		ess.runTaskAsynchronously(new Runnable()
 		{
 			@Override

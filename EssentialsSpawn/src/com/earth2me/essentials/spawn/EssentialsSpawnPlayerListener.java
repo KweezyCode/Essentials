@@ -106,16 +106,16 @@ public class EssentialsSpawnPlayerListener implements Listener
 				}
 				
 				//This method allows for multiple line player announce messages using multiline yaml syntax #EasterEgg
-				if (ess.getSettings().getAnnounceNewPlayers())
-				{
-					final IText output = new KeywordReplacer(ess.getSettings().getAnnounceNewPlayerFormat(), user, ess);
-					final SimpleTextPager pager = new SimpleTextPager(output);
+				// if (ess.getSettings().getAnnounceNewPlayers())
+				// {
+				// 	final IText output = new KeywordReplacer(ess.getSettings().getAnnounceNewPlayerFormat(), user, ess);
+				// 	final SimpleTextPager pager = new SimpleTextPager(output);
 
-					for (String line : pager.getLines())
-					{
-						ess.broadcastMessage(user, line);
-					}
-				}
+				// 	for (String line : pager.getLines())
+				// 	{
+				// 		ess.broadcastMessage(user, line);
+				// 	}
+				// }
 
 				final String kitName = ess.getSettings().getNewPlayerKit();
 				if (!kitName.isEmpty())

@@ -17,9 +17,7 @@ public interface ISettings extends IConf
 {
 	boolean areSignsDisabled();
 
-	IText getAnnounceNewPlayerFormat();
-
-	boolean getAnnounceNewPlayers();
+	String getAnnounceNewPlayerFormat();
 
 	String getNewPlayerKit();
 

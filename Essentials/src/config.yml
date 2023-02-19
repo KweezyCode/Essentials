@@ -19,13 +19,17 @@
 # +------------------------------------------------------+ #
 ############################################################
 
-# You can set a custom join message here, set to "none" to disable.
+# You can set a custom join message here, set to "" to disable.
 # You may use color codes, use {DISPLAYNAME} the player's name.
-custom-join-message: "none"
+custom-join-message: ""
 
-# You can set a custom quit message here, set to "none" to disable.
+# You can set a custom quit message here, set to "" to disable.
 # You may use color codes, use {DISPLAYNAME} the player's name.
-custom-quit-message: "none"
+custom-quit-message: ""
+
+# You can set a custom join message for newbies here, set to "" to disable.
+# You may use color codes, use {DISPLAYNAME} the player's name.
+custom-newbie-join-message: ""
 
 # A color code between 0-9 or a-f. Set to 'none' to disable.
 ops-name-color: '4'
@@ -683,12 +687,6 @@ protect:
 ############################################################
 
 newbies:
-  # Should we announce to the server when someone logs in for the first time?
-  # If so, use this format, replacing {DISPLAYNAME} with the player name.
-  # If not, set to ''
-  #announce-format: ''
-  announce-format: '&dWelcome {DISPLAYNAME}&d to the server!'
-
   # When we spawn for the first time, which spawnpoint do we use?
   # Set to "none" if you want to use the spawn point of the world.
   spawnpoint: newbies

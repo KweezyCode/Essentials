@@ -436,16 +436,11 @@ public class Settings implements ISettings
 		return mFormat;
 	}
 
-	@Override
-	public boolean getAnnounceNewPlayers()
-	{
-		return !config.getString("newbies.announce-format", "-").isEmpty();
-	}
 
 	@Override
-	public IText getAnnounceNewPlayerFormat()
+	public String getAnnounceNewPlayerFormat()
 	{
-		return new SimpleTextInput(FormatUtil.replaceFormat(config.getString("newbies.announce-format", "&dWelcome {DISPLAYNAME} to the server!")));
+		return config.getString("custom-newbie-join-message", "&dWelcome {DISPLAYNAME} to the server!");
 	}
 
 	@Override
