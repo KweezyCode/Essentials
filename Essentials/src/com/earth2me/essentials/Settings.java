@@ -37,6 +37,16 @@ public class Settings implements ISettings
 	}
 
 	@Override
+	public String getCustomQuitMessage() {
+		return config.getString("custom-quit-message");
+	}
+	@Override
+	public String getCustomJoinMessage() {
+		return config.getString("custom-join-message");
+	}
+
+
+	@Override
 	public boolean getRespawnAtHome()
 	{
 		return config.getBoolean("respawn-at-home", false);

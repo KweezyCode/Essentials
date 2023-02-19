@@ -13,10 +13,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+
+import org.bukkit.*;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -137,6 +135,15 @@ public class EssentialsPlayerListener implements Listener
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerQuit(final PlayerQuitEvent event)
 	{
+		if (!ess.getSettings().getCustomQuitMessage().equals("none")) {
+			event.setQuitMessage(
+					ChatColor.translateAlternateColorCodes(
+							'&',
+							ess.getSettings().getCustomQuitMessage().replace("{DISPLAYNAME}", ess.getUser(event.getPlayer()).getNick(true))
+					)
+			);
+		}
+
 		final User user = ess.getUser(event.getPlayer());
 		if (ess.getSettings().removeGodOnDisconnect() && user.isGodModeEnabled())
 		{
@@ -158,6 +165,14 @@ public class EssentialsPlayerListener implements Listener
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerJoin(final PlayerJoinEvent event)
 	{
+		if (!ess.getSettings().getCustomJoinMessage().equals("none")) {
+			event.setJoinMessage(
+					ChatColor.translateAlternateColorCodes(
+							'&',
+							ess.getSettings().getCustomJoinMessage().replace("{DISPLAYNAME}", ess.getUser(event.getPlayer()).getNick(true))
+					)
+			);
+		}
 		ess.runTaskAsynchronously(new Runnable()
 		{
 			@Override

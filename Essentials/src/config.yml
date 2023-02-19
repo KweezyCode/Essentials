@@ -19,6 +19,14 @@
 # +------------------------------------------------------+ #
 ############################################################
 
+# You can set a custom join message here, set to "none" to disable.
+# You may use color codes, use {DISPLAYNAME} the player's name.
+custom-join-message: "none"
+
+# You can set a custom quit message here, set to "none" to disable.
+# You may use color codes, use {DISPLAYNAME} the player's name.
+custom-quit-message: "none"
+
 # A color code between 0-9 or a-f. Set to 'none' to disable.
 ops-name-color: '4'
 
